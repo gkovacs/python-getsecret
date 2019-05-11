@@ -7,7 +7,7 @@ setuptools.setup(
     name="getsecret",
     version="0.0.2",
     author="Geza Kovacs",
-    author_email="github.com/gkovacs",
+    author_email="noreply@gkovacs.com",
     description="Reads credentials from a yaml file",
     long_description=long_description,
     long_description_content_type="text/markdown",
