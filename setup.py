@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="getsecret",
-    version="0.0.1",
+    version="0.0.2",
     author="Geza Kovacs",
     author_email="github.com/gkovacs",
     description="Reads credentials from a yaml file",

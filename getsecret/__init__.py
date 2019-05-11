@@ -4,7 +4,7 @@ from os.path import expanduser, isfile
 def getsecret(key):
   secrets = {}
   if isfile('.getsecret.yaml'):
-    secrets = yaml.load(open('.getsecret.yaml'))
+    secrets = yaml.load(open('.getsecret.yaml'), loader=yaml.SafeLoader)
   elif isfile(expanduser('~/.getsecret.yaml')):
     secrets = yaml.load(open(expanduser('~/.getsecret.yaml')))
   else:
