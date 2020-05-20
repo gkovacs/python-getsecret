@@ -1,7 +1,11 @@
 import yaml
 from os.path import expanduser, isfile
+import os
 
 def getsecret(key, default=None):
+  environ_value = os.environ.get(key)
+  if environ_value is not None:
+    return environ_value
   secrets = {}
   if isfile('.getsecret.yaml'):
     secrets = yaml.load(open('.getsecret.yaml'), Loader=yaml.SafeLoader)
