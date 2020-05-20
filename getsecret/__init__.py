@@ -1,14 +1,18 @@
 import yaml
 from os.path import expanduser, isfile
 
-def getsecret(key):
+def getsecret(key, default=None):
   secrets = {}
   if isfile('.getsecret.yaml'):
-    secrets = yaml.load(open('.getsecret.yaml'), loader=yaml.SafeLoader)
+    secrets = yaml.load(open('.getsecret.yaml'), Loader=yaml.SafeLoader)
   elif isfile(expanduser('~/.getsecret.yaml')):
     secrets = yaml.load(open(expanduser('~/.getsecret.yaml')))
   else:
-    raise FileNotFoundError('cannot find .getsecret.yaml')
+    if default is None:
+      raise FileNotFoundError('cannot find .getsecret.yaml')
+    return default
   if key not in secrets:
-    raise ValueError('.getsecret.yaml does not contain key ' + key)
+    if default is None:
+      raise ValueError('.getsecret.yaml does not contain key ' + key)
+    return default
   return secrets[key]
